@@ -35,6 +35,9 @@ async function main() {
     <meta name="description" content="${cfg.meta.description}">
     <link rel="canonical" href="${cfg.meta.canonical}${page.path}">
     <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     ${headTags}
   </head>
   <body>
