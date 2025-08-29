@@ -45,7 +45,7 @@ async function main() {
 
   const headTags = (cfg.meta.headTags || []).join('\n    ');
   const fontURL = fontString(cfg.meta.fonts);
-  const fonts = cfg.meta.fonts.length ? `
+  const fonts = fontURL.length > 50 ? `
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="${fontURL}">` : '';
