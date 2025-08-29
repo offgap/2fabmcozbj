@@ -5,7 +5,7 @@
   },
   "meta": {
     "title": "LightOff",
-    "fonts": ["Mona Sans", "Inter Tight"],
+    "fonts": {"Mona Sans":["200"],"Inter Tight":["700"]},
     "description": "A blog about tech and life",
     "canonical": "https://demo.offgap.com/",
     "headTags": [
