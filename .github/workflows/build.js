@@ -44,7 +44,7 @@ async function main() {
   await fs.writeFile(path.join(BUILD_DIR, `${cfg.sid}.js`), cfg.js, 'utf8');
 
   const headTags = (cfg.meta.headTags || []).join('\n    ');
-  const fontURL = fontString(cfg.meta.fonts);
+  const fontURL = fontString(cfg.fonts);
   const fonts = fontURL.length > 50 ? `
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
