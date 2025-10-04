@@ -50,6 +50,11 @@ async function main() {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="${fontURL}">` : '';
   const nav = cfg.pages.reduce((acc, page) => page.path.split('/').length < 4 ? `${acc}<a href="${page.path}">${page.title}</a>` : acc, '');
+  const feed = cfg.feed?.list?.reduce((acc, item) => {
+    const time = new Date(item.time * 1e4);
+    return time instanceof Date && Number.isFinite(time.getTime()) && item.text ? `${acc}<div><time datetime="${time.toISOString().slice(0, 16)}">${
+      time.toLocaleString(temp1.feed?.locale, temp1.feed?.format)}</time><hgroup>${item.text}</hgroup></div>` : acc;
+  }, '') ?? '';
 
   // generate pages
   for (const page of cfg.pages) {
@@ -74,7 +79,7 @@ async function main() {
   </head>
   <body class="_${fixedHash(page.path)}">${cfg.header?.content ? `
     <header>${cfg.header.content.replaceAll('<nav></nav>', `<nav>${nav}</nav>`)}</header>` : ''}
-    <main>${page.content}</main>${cfg.footer?.content ? `
+    <main>${page.content.replaceAll('<area/>', `<menu>${feed}</menu>`)}</main>${cfg.footer?.content ? `
     <footer>${cfg.footer.content.replaceAll('<nav></nav>', `<nav>${nav}</nav>`)}</footer>` : ''}
     <script src="/${cfg.sid}.js"></script>
   </body>
