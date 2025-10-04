@@ -52,8 +52,8 @@ async function main() {
   const nav = cfg.pages.reduce((acc, page) => page.path.split('/').length < 4 ? `${acc}<a href="${page.path}">${page.title}</a>` : acc, '');
   const feed = cfg.feed?.list?.reduce((acc, item) => {
     const time = new Date(item.time * 1e4);
-    return time instanceof Date && Number.isFinite(time.getTime()) && item.text ? `${acc}<div><time datetime="${time.toISOString().slice(0, 16)
-      }">${time.toLocaleString(cfg.feed?.locale, cfg.feed?.format)}</time><hgroup>${item.text}</hgroup></div>` : acc;
+    return time instanceof Date && Number.isFinite(time.getTime()) && item.text ? `${acc}<div class="feed"><time datetime="${time.toISOString()
+      .slice(0, 16)}">${time.toLocaleString(cfg.feed?.locale, cfg.feed?.format)}</time><hgroup>${item.text}</hgroup></div>` : acc;
   }, '') ?? '';
 
   // generate pages
