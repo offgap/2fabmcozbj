@@ -79,7 +79,7 @@ async function main() {
   </head>
   <body class="_${fixedHash(page.path)}">${cfg.header?.content ? `
     <header>${cfg.header.content.replaceAll('<nav></nav>', `<nav>${nav}</nav>`)}</header>` : ''}
-    <main>${page.content.replaceAll('<area/>', `<menu>${feed}</menu>`)}</main>${cfg.footer?.content ? `
+    <main>${page.content.replaceAll('<area>', `<menu>${feed}</menu>`)}</main>${cfg.footer?.content ? `
     <footer>${cfg.footer.content.replaceAll('<nav></nav>', `<nav>${nav}</nav>`)}</footer>` : ''}
     <script src="/${cfg.sid}.js"></script>
   </body>
